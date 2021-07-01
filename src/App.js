@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import './App.css';
 
-// const USERS_URL = 'https://example.com/api/users';
-// const USERS_URL = "https://gist.githubusercontent.com/falcon013/63e47740fc9003b7ccd13c695d0cfc71/raw/21af82d0f1dab7ae869be950de823217bc99539f/gistfile1.txt"
 // mockapi.io - https://60dd2f71c2b6280017febe30.mockapi.io/api/users?page=1&limit=10
 const USERS_URL = "https://60dd2f71c2b6280017febe30.mockapi.io/api/users"
 const userLimitPerPage = 10;
