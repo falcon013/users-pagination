@@ -9,7 +9,6 @@ export default function Table() {
     const [users, setUsers] = useState([]);
     const [lastPage, setLastPage] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
-    const [paginationButtonsEnabled, setPaginationButtonsEnabled] = useState(true);
 
     useEffect(() => {
         const getData = async () => {
@@ -24,7 +23,6 @@ export default function Table() {
             }
         }
         getData();
-        setPaginationButtonsEnabled(false);
     }, [currentPage])
 
     const renderTable = () => {
@@ -53,26 +51,19 @@ export default function Table() {
                 </tbody>
             </table>
             <section className="pagination">
-                <button disabled={paginationButtonsEnabled} onClick={() => {
-                    setCurrentPage(1)
-                }
-                } className="first-page-btn">first
+                <button disabled={currentPage === 1} onClick={() => {
+                    setCurrentPage(1) }} className="first-page-btn">first
                 </button>
-                <button disabled={paginationButtonsEnabled} onClick={ () => {
+                <button disabled={currentPage === 1} onClick={ () => {
                     if (currentPage > 1)
-                        setCurrentPage(currentPage - 1);
-                }
-                } className="previous-page-btn">previous
+                        setCurrentPage(currentPage - 1)}} className="previous-page-btn">previous
                 </button>
-                <button disabled={paginationButtonsEnabled} onClick={ () => {
+                <button disabled={currentPage === lastPage} onClick={ () => {
                     if (currentPage < lastPage)
-                        setCurrentPage(currentPage + 1);
-                }
-                } className="next-page-btn">next</button>
-                <button disabled={paginationButtonsEnabled} onClick={() => {
-                    setCurrentPage(lastPage);
-                }
-                } className="last-page-btn">last
+                        setCurrentPage(currentPage + 1);}} className="next-page-btn">next
+                </button>
+                <button disabled={currentPage === lastPage} onClick={() => {
+                    setCurrentPage(lastPage); }} className="last-page-btn">last
                 </button>
             </section>
         </div>
